@@ -7,18 +7,24 @@ var {
     StyleSheet,
     } = React;
 var styles = StyleSheet.create({
+    flexContainer:{
+      flex:1
+    },
     container: {
         backgroundColor: '#ddd',
-        padding: 10,
+        margin:0,
+        paddingHorizontal:10,
+        paddingVertical:15,
         flex:1
     },
     loading: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#ddd'
+        backgroundColor: '#ddd',
+        flex:1
     },
     articleCell: {
-        marginBottom: 15,
+        marginBottom:15
     },
     articleBox:{
         backgroundColor: '#fff',
@@ -41,7 +47,7 @@ var styles = StyleSheet.create({
         color: '#666666'
     },
     webView: {
-
+        flex:1
     },
     navButton: {
         width: 24,

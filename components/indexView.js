@@ -20,12 +20,12 @@ var IndexView = React.createClass({
         if (!this.state.loaded) {
             return this.renderLoadingView();
         }
-        var nav = this.props.navigator;
         return (
             <ListView
                 dataSource={this.state.dataSource}
                 renderRow={(article)=>this.renderArticle(article)}
                 style={styles.container}
+                automaticallyAdjustContentInsets={false}
                 />
         );
     },
@@ -65,7 +65,7 @@ var IndexView = React.createClass({
                           if(article&&article.title){
                               datas.push(article);
                           }
-                    })
+                    });
                     this.setState({
                         dataSource: this.state.dataSource.cloneWithRows(datas),
                         loaded: true,

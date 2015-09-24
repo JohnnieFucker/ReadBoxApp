@@ -10,7 +10,6 @@ var NavBar = require('./components/navBar');
 var ArticleDetail = require('./components/articleDetail');
 var {
     AppRegistry,
-    Image,
     ListView,
     Navigator,
     Text,
@@ -47,12 +46,12 @@ var NavbarWrapper = React.createClass({
         }
         switch(route.id){
             case 'index':
-                return(<View style={{ flex: 1}}>
+                return(<View style={styles.flexContainer}>
                     {navBar}
                     <IndexView navigator={nav} route={route} />
                 </View>);
             case 'articleDetail':{
-                return(<View style={{ flex: 1}}>
+                return(<View style={styles.flexContainer}>
                     {navBar}
                     <ArticleDetail navigator={nav} route={route} />
                 </View>);

@@ -14,7 +14,7 @@ var ArticleDetail =React.createClass({
         var articleId = this.props.route.articleId;
         var url = 'http://drea.mx:8011/read/'+articleId;
         return (
-            <View style={{flex:1}}>
+            <View style={styles.flexContainer}>
                 <NavBar title="ReadBox" route={this.props.route}
                         goBack={() =>{this.props.navigator.pop();}}/>
                 <WebView
@@ -23,6 +23,7 @@ var ArticleDetail =React.createClass({
                     style={styles.webView}
                     url={url}startInLoadingState={true}
                     scalesPageToFit={false}
+                    automaticallyAdjustContentInsets={false}
                     />
             </View>
         );

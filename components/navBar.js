@@ -9,73 +9,62 @@ var {
     StyleSheet,
     TouchableOpacity,
     } = React;
-var PreButton = React.createClass({
-    render(){
-
-    }
-});
 var NavBar = React.createClass({
     render() {
-        console.log(this.props.route);
-        switch (this.props.route.id) {
-            case 'index':
-            {
-                return(<View style={[styles.container, this.props.style]}>
-                    <Text style={styles.titleText}>{this.props.title}</Text>
+        return(
+            <View style={[styles.navBar, this.props.style]}>
+                <View style={[styles.corner, styles.leftCorner,this.props.route.id=='index'&&styles.hidden]}>
+                    <TouchableOpacity style={styles.btn} onPress={this.props.goBack}>
+                        <Text style={styles.buttonText}>{'<返回'}</Text>
+                    </TouchableOpacity>
                 </View>
-                );
-            }
-            default:
-            {
-                return (
-                    <View style={[styles.container, this.props.style]}>
-                        <View style={[styles.corner, styles.leftCorner]}>
-                            <TouchableOpacity onPress={this.props.goBack}>
-                                <Text style={styles.buttonText}>{'<返回'}</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <Text style={styles.titleText}>{this.props.title}</Text>
-                        <View style={[styles.corner, styles.rightCorner]}>
-                        </View>
-                    </View>);
-            }
-        }
+                <Text style={styles.titleText}>{this.props.title}</Text>
+                <View style={[styles.corner, styles.rightCorner,this.props.route.id=='index'&&styles.hidden]}>
+                </View>
+            </View>
+        );
     },
 });
 
 var styles = StyleSheet.create({
-    container: {
+    navBar: {
         alignItems: 'center',
         backgroundColor:'red',
-        height:60,
         flexDirection:'row',
+        height:64,
         overflow:'hidden'
     },
-
     titleText: {
         fontSize: 18,
         color: '#fff',
         textAlign: 'center',
-        marginVertical: 15,
         flex:1
     },
-
     buttonText: {
         fontSize: 14,
         color: '#fff'
     },
-
     corner: {
         width:80,
-        paddingHorizontal:10
+        height:64,
+        alignItems: 'center',
+        paddingHorizontal:10,
+        overflow:'hidden'
     },
-
+    btn:{
+        alignItems: 'center',
+        justifyContent:'center',
+        flex:1
+    },
     leftCorner: {
         alignItems:'flex-start',
     },
 
     rightCorner: {
         alignItems:'flex-end',
+    },
+    hidden:{
+        height:0,
     }
 });
 
