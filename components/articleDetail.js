@@ -19,7 +19,6 @@ var ArticleDetail =React.createClass({
                         goBack={() =>{this.props.navigator.pop();}}/>
                 <WebView
                     ref={url}
-                    automaticallyAdjustContentInsets={true}
                     style={styles.webView}
                     url={url}startInLoadingState={true}
                     scalesPageToFit={false}
