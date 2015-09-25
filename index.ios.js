@@ -10,7 +10,6 @@ var NavBar = require('./components/navBar');
 var ArticleDetail = require('./components/articleDetail');
 var {
     AppRegistry,
-    ListView,
     Navigator,
     Text,
     View,

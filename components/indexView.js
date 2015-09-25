@@ -7,12 +7,14 @@ var React = require('react-native');
 var styles = require('./styleSheet');
 var ArticleCell = require('./articleCell');
 var REQUEST_URL = 'http://drea.mx:8011/handle/getList/0';
+var RefreshableListView = require('react-native-refreshable-listview');
 var _ = require('underscore');
 var {
-    ListView,
     StyleSheet,
+    ListView,
     Text,
     View,
+    ActivityIndicatorIOS
     } = React;
 
 var IndexView = React.createClass({
@@ -21,13 +23,18 @@ var IndexView = React.createClass({
             return this.renderLoadingView();
         }
         return (
-            <ListView
+            <RefreshableListView
                 dataSource={this.state.dataSource}
                 renderRow={(article)=>this.renderArticle(article)}
                 style={styles.container}
                 automaticallyAdjustContentInsets={false}
+                loadData={this.reloadDate}
+                refreshDescription="学而时习之，不亦说乎？"
                 />
         );
+    },
+    reloadDate() {
+        return this.fetchData();
     },
     getInitialState: function () {
         return {
@@ -44,8 +51,12 @@ var IndexView = React.createClass({
     renderLoadingView: function () {
         return (
             <View style={styles.loading}>
+                <ActivityIndicatorIOS
+                    animating={true}
+                    size="small"
+                    />
                 <Text>
-                    Loading Article...
+                    学而时习之，不亦说乎？
                 </Text>
             </View>
         );
