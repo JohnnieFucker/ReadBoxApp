@@ -51,13 +51,13 @@ var IndexView = React.createClass({
     renderLoadingView: function () {
         return (
             <View style={styles.loading}>
+                <Text>
+                    学而时习之，不亦说乎？
+                </Text>
                 <ActivityIndicatorIOS
                     animating={true}
                     size="small"
                     />
-                <Text>
-                    学而时习之，不亦说乎？
-                </Text>
             </View>
         );
     },
