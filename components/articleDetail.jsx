@@ -6,17 +6,22 @@ var React = require('react-native');
 var styles = require('./styleSheet');
 var NavBar = require('./navBar');
 var {
-     WebView,
+    WebView,
     View,
     } = React;
-var ArticleDetail =React.createClass({
-    render: function () {
+var config = require('../config/config.json');
+
+class ArticleDetail  extends React.Component{
+    render() {
         var articleId = this.props.route.articleId;
-        var url = 'http://drea.mx:8011/read/'+articleId;
+        var url = config.articleUrlPrefix+articleId;
         return (
             <View style={styles.flexContainer}>
-                <NavBar title="ReadBox" route={this.props.route}
-                        goBack={() =>{this.props.navigator.pop();}}/>
+                <NavBar
+                    title="ReadBox"
+                    route={this.props.route}
+                    goBack={() =>{this.props.navigator.pop();}}
+                    />
                 <WebView
                     ref={url}
                     style={styles.webView}
@@ -26,6 +31,6 @@ var ArticleDetail =React.createClass({
                     />
             </View>
         );
-    },
-});
+    }
+}
 module.exports = ArticleDetail;

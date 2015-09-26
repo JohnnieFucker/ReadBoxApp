@@ -1,6 +1,3 @@
-/**
- * Created by leeshine on 15/9/19.
- */
 'use strict';
 var React = require('react-native');
 var styles = require('./styleSheet');
@@ -11,8 +8,8 @@ var {
     View,
     TouchableHighlight,
     } = React;
-var ArticleCell = React.createClass({
-    render: function () {
+class ArticleCell extends React.Component {
+    render() {
         var article = this.props.article;
 
         return (
@@ -32,6 +29,6 @@ var ArticleCell = React.createClass({
                 </TouchableHighlight>
             </View>
         );
-    },
-});
+    }
+}
 module.exports = ArticleCell;

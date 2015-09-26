@@ -9,7 +9,7 @@ var {
     StyleSheet,
     TouchableOpacity,
     } = React;
-var NavBar = React.createClass({
+class NavBar extends React.Component{
     render() {
         return(
             <View style={[styles.navBar, this.props.style]}>
@@ -23,8 +23,8 @@ var NavBar = React.createClass({
                 </View>
             </View>
         );
-    },
-});
+    }
+}
 
 var styles = StyleSheet.create({
     navBar: {
@@ -57,14 +57,14 @@ var styles = StyleSheet.create({
         flex:1
     },
     leftCorner: {
-        alignItems:'flex-start',
+        alignItems:'flex-start'
     },
 
     rightCorner: {
-        alignItems:'flex-end',
+        alignItems:'flex-end'
     },
     hidden:{
-        height:0,
+        height:0
     }
 });
 

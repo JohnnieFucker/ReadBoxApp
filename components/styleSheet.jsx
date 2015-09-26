@@ -6,6 +6,7 @@ var React = require('react-native');
 var {
     StyleSheet,
     } = React;
+
 var styles = StyleSheet.create({
     flexContainer:{
       flex:1
@@ -29,7 +30,7 @@ var styles = StyleSheet.create({
     articleBox:{
         backgroundColor: '#fff',
         borderRadius: 3,
-        padding: 15,
+        padding: 15
     },
     title: {
         fontSize: 18,
@@ -38,7 +39,7 @@ var styles = StyleSheet.create({
     },
     summary: {
         fontSize: 14,
-        textAlign: 'left',
+        textAlign: 'left'
     },
     time: {
         fontSize: 12,
@@ -51,10 +52,10 @@ var styles = StyleSheet.create({
     },
     navButton: {
         width: 24,
-        height: 30,
+        height: 30
     },
     navButtonText:{
-        color:'#fff',
+        color:'#fff'
     },
     navTitleBox: {
         width: 100,

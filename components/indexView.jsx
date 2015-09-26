@@ -1,12 +1,7 @@
-/**
- * Created by leeshine on 15/9/19.
- */
-
 'use strict';
 var React = require('react-native');
 var styles = require('./styleSheet');
 var ArticleCell = require('./articleCell');
-var REQUEST_URL = 'http://drea.mx:8011/handle/getList/0';
 var RefreshableListView = require('react-native-refreshable-listview');
 var _ = require('underscore');
 var {
@@ -16,9 +11,10 @@ var {
     View,
     ActivityIndicatorIOS
     } = React;
+var config = require('../config/config.json');
 
-var IndexView = React.createClass({
-    render: function () {
+class IndexView extends React.Component{
+    render() {
         if (!this.state.loaded) {
             return this.renderLoadingView();
         }
@@ -30,25 +26,10 @@ var IndexView = React.createClass({
                 automaticallyAdjustContentInsets={false}
                 loadData={this.reloadDate}
                 refreshDescription="学而时习之，不亦说乎？"
-                />
+            />
         );
-    },
-    reloadDate() {
-        return this.fetchData();
-    },
-    getInitialState: function () {
-        return {
-            dataSource: new ListView.DataSource({
-                rowHasChanged: (row1, row2) => row1 !== row2,
-            }),
-            loaded: false,
-        };
-    },
-    componentDidMount: function () {
-        this.fetchData();
-    },
-
-    renderLoadingView: function () {
+    }
+    renderLoadingView(){
         return (
             <View style={styles.loading}>
                 <Text>
@@ -60,14 +41,33 @@ var IndexView = React.createClass({
                     />
             </View>
         );
-    },
-    renderArticle: function (article) {
+    }
+    reloadDate() {
+        return this.fetchData();
+    }
+    getInitialState() {
+        return {
+            dataSource: new ListView.DataSource({
+                rowHasChanged: (row1, row2) => row1 !== row2,
+            }),
+            loaded: false
+        };
+    }
+    componentDidMount() {
+        this.fetchData();
+    }
+    renderArticle(article) {
         return (
-            <ArticleCell key={article._id} article={article} onSelect={() => this.goToArticle(article)}/>
+            <ArticleCell
+                key={article._id}
+                article={article}
+                onSelect={() => this.goToArticle(article)}
+                />
         );
-    },
-    fetchData: function () {
-        fetch(REQUEST_URL)
+    }
+    fetchData() {
+        var requestUrl = config.apiUrlPrefix + 'getArticleList/0';
+        fetch(requestUrl)
             .then((response) => response.json())
             .then((responseData) => {
                 if (responseData.result == 'true') {
@@ -84,12 +84,12 @@ var IndexView = React.createClass({
                 }
             })
             .done();
-    },
-    goToArticle: function (article) {
+    }
+    goToArticle(article) {
         this.props.navigator.push({
             id:'articleDetail',
             articleId: article._id
         });
     }
-});
+}
 module.exports = IndexView;
