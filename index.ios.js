@@ -30,7 +30,7 @@ class ReadBoxApp extends React.Component {
                 }}
             />
         );
-    }
+    };
     renderScene(route, nav) {
         var navBar = route.navigationBar;
         if (navBar) {
